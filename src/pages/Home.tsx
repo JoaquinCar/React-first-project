@@ -1,24 +1,68 @@
-import Tarjeta from '../components/tarjeta';
+import { useState, useEffect } from 'react';
+import MovieCard from '../components/MovieCard';
+import peliculas from '../detalles.json';
 
-interface HomeProps {
-  cambiarVista: (vista: string) => void;
+interface Pelicula {
+  id: number;
+  titulo: string;
+  imagen: string;
+  descripcion: string;
 }
 
-function Home({ cambiarVista }: HomeProps) {
+interface Noticia {
+  id: number;
+  title: string;
+  body: string;
+}
+
+interface HomeProps {
+  verDetalle: (pelicula: Pelicula) => void;
+}
+
+function Home({ verDetalle }: HomeProps) {
+  const [noticias, setNoticias] = useState<Noticia[]>([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
+      .then(res => res.json())
+      .then(data => setNoticias(data));
+  }, []);
+
   return (
-    <main style={{
-      maxWidth: '1200px',
-      margin: '0 auto',
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-      gap: '16px',
-      padding: '16px',
-    }}>
-      <Tarjeta title="Grown Ups" image="https://image.tmdb.org/t/p/original/r1mDA1SLjw2yiYhhLiAjrd2Pt1l.jpg" onVerDetalle={() => cambiarVista('detalle')} />
-      <Tarjeta title="Her" image="https://image.tmdb.org/t/p/original/n1sY9uAsQKOus91A4FtvN3JdHYH.jpg" onVerDetalle={() => cambiarVista('detalle')} />
-      <Tarjeta title="Sinners" image="https://image.tmdb.org/t/p/original/jIVa5m9s7bKYdI0KH8wFw1qLxHl.jpg" onVerDetalle={() => cambiarVista('detalle')} />
-      <Tarjeta title="One Battle After Another" image="https://image.tmdb.org/t/p/original/iZ1499F6hYxDxiqioy8oSUaxipG.jpg" onVerDetalle={() => cambiarVista('detalle')} />
-    </main>
+    <>
+      <main style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+        gap: '16px',
+        padding: '16px',
+      }}>
+        {(peliculas as Pelicula[]).map((pelicula) => (
+          <MovieCard
+            key={pelicula.id}
+            title={pelicula.titulo}
+            image={pelicula.imagen}
+            onVerDetalle={() => verDetalle(pelicula)}
+          />
+        ))}
+      </main>
+
+      <section style={{ maxWidth: '1200px', margin: '0 auto', padding: '16px' }}>
+        <h2>Noticias del Cine</h2>
+        {noticias.map((noticia) => (
+          <div key={noticia.id} style={{
+            marginBottom: '16px',
+            padding: '16px',
+            border: '1px solid #ddd',
+            borderRadius: '8px'
+          }}>
+            <h3>{noticia.title}</h3>
+            <p>{noticia.body}</p>
+          </div>
+        ))}
+      </section>
+    </>
   );
 }
 

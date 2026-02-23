@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "titulo": "Grown Ups",
+    "imagen": "https://image.tmdb.org/t/p/original/r1mDA1SLjw2yiYhhLiAjrd2Pt1l.jpg",
+    "descripcion": "Después de que su entrenador de baloncesto fallece, cinco amigos de la infancia se reúnen con sus familias para un fin de semana en el lago donde crecieron."
+  },
+  {
+    "id": 2,
+    "titulo": "Her",
+    "imagen": "https://image.tmdb.org/t/p/original/n1sY9uAsQKOus91A4FtvN3JdHYH.jpg",
+    "descripcion": "Un escritor solitario desarrolla una relación poco común con su sistema operativo, diseñado para satisfacer todas sus necesidades."
+  },
+  {
+    "id": 3,
+    "titulo": "Sinners",
+    "imagen": "https://image.tmdb.org/t/p/original/jIVa5m9s7bKYdI0KH8wFw1qLxHl.jpg",
+    "descripcion": "Intentando dejar atrás sus vidas problemáticas, dos hermanos gemelos regresan a su ciudad natal para comenzar de nuevo, solo para descubrir que un mal aún mayor los espera."
+  },
+  {
+    "id": 4,
+    "titulo": "One Battle After Another",
+    "imagen": "https://image.tmdb.org/t/p/original/iZ1499F6hYxDxiqioy8oSUaxipG.jpg",
+    "descripcion": "Bob, un revolucionario venido a menos que vive en paranoia, debe encontrar a su hija Willa cuando su antiguo némesis reaparece después de 16 años."
+  }
+]
