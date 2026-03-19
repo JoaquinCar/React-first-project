@@ -1,31 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
+import peliculas from '../detalles.json';
 
-interface Pelicula {
-  id: number;
-  titulo: string;
-  imagen: string;
-  descripcion: string;
-}
+function Cartelera() {
+  const navigate = useNavigate();
 
-interface CarteleraProps {
-  verDetalle: (pelicula: Pelicula) => void;
-}
-
-function Cartelera({ verDetalle }: CarteleraProps) {
-  const peliculasCartelera: Pelicula[] = [
-    {
-      id: 101,
-      titulo: 'Shingeki No Kyojin: The Final Season',
-      imagen: 'https://m.media-amazon.com/images/M/MV5BMzVhOGMzYzQtNzgyMi00NjZmLWEzYjUtMjQ2NDE3Njk4MmRkXkEyXkFqcGc@._V1_.jpg',
-      descripcion: 'La batalla final por la humanidad ha comenzado.'
-    },
-    {
-      id: 102,
-      titulo: 'Bob Esponja: Al Rescate',
-      imagen: 'https://m.media-amazon.com/images/M/MV5BNjAyZDQwOTktZjc0Yi00MzNjLWI1NmUtODI2ZjJmYWRjOTA3XkEyXkFqcGc@._V1_.jpg',
-      descripcion: 'Bob Esponja y Patricio viven una nueva aventura submarina.'
-    }
-  ];
+  function irADetalle(id: number) {
+    navigate(`/pelicula/${id}`);
+  }
 
   return (
     <main style={{
@@ -36,12 +18,12 @@ function Cartelera({ verDetalle }: CarteleraProps) {
       gap: '16px',
       padding: '16px',
     }}>
-      {peliculasCartelera.map((pelicula) => (
+      {peliculas.map((pelicula) => (
         <MovieCard
           key={pelicula.id}
           title={pelicula.titulo}
           image={pelicula.imagen}
-          onVerDetalle={() => verDetalle(pelicula)}
+          onVerDetalle={() => irADetalle(pelicula.id)}
         />
       ))}
     </main>

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import todasLasPeliculas from '../detalles.json';
 
 interface Pelicula {
   id: number;
@@ -7,11 +9,10 @@ interface Pelicula {
   descripcion: string;
 }
 
-interface DetalleProps {
-  pelicula: Pelicula | null;
-}
+function Detalle() {
+  const { id } = useParams();
+  const pelicula = (todasLasPeliculas as Pelicula[]).find(p => p.id === Number(id));
 
-function Detalle({ pelicula }: DetalleProps) {
   const [nombre, setNombre] = useState('');
   const [cantidadBoletos, setCantidadBoletos] = useState(1);
   const [mensaje, setMensaje] = useState('');

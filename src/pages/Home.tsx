@@ -1,13 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
+import MovieCarousel from '../components/MovieCarousel';
 import peliculas from '../detalles.json';
-
-interface Pelicula {
-  id: number;
-  titulo: string;
-  imagen: string;
-  descripcion: string;
-}
 
 interface Noticia {
   id: number;
@@ -15,11 +10,8 @@ interface Noticia {
   body: string;
 }
 
-interface HomeProps {
-  verDetalle: (pelicula: Pelicula) => void;
-}
-
-function Home({ verDetalle }: HomeProps) {
+function Home() {
+  const navigate = useNavigate();
   const [noticias, setNoticias] = useState<Noticia[]>([]);
 
   useEffect(() => {
@@ -28,8 +20,17 @@ function Home({ verDetalle }: HomeProps) {
       .then(data => setNoticias(data));
   }, []);
 
+  function irADetalle(id: number) {
+    navigate(`/pelicula/${id}`);
+  }
+
   return (
     <>
+      <section style={{ maxWidth: '1200px', margin: '0 auto', padding: '16px' }}>
+        <h2>Estrenos</h2>
+        <MovieCarousel movies={peliculas} onVerDetalle={irADetalle} />
+      </section>
+
       <main style={{
         maxWidth: '1200px',
         margin: '0 auto',
@@ -38,12 +39,12 @@ function Home({ verDetalle }: HomeProps) {
         gap: '16px',
         padding: '16px',
       }}>
-        {(peliculas as Pelicula[]).map((pelicula) => (
+        {peliculas.map((pelicula) => (
           <MovieCard
             key={pelicula.id}
             title={pelicula.titulo}
             image={pelicula.imagen}
-            onVerDetalle={() => verDetalle(pelicula)}
+            onVerDetalle={() => irADetalle(pelicula.id)}
           />
         ))}
       </main>

@@ -22,5 +22,17 @@
     "titulo": "One Battle After Another",
     "imagen": "https://image.tmdb.org/t/p/original/iZ1499F6hYxDxiqioy8oSUaxipG.jpg",
     "descripcion": "Bob, un revolucionario venido a menos que vive en paranoia, debe encontrar a su hija Willa cuando su antiguo némesis reaparece después de 16 años."
+  },
+  {
+    "id": 101,
+    "titulo": "Shingeki No Kyojin: The Final Season",
+    "imagen": "https://m.media-amazon.com/images/M/MV5BMzVhOGMzYzQtNzgyMi00NjZmLWEzYjUtMjQ2NDE3Njk4MmRkXkEyXkFqcGc@._V1_.jpg",
+    "descripcion": "La batalla final por la humanidad ha comenzado. Eren desata el Rumble y solo sus amigos pueden detenerlo."
+  },
+  {
+    "id": 102,
+    "titulo": "Bob Esponja: Al Rescate",
+    "imagen": "https://m.media-amazon.com/images/M/MV5BNjAyZDQwOTktZjc0Yi00MzNjLWI1NmUtODI2ZjJmYWRjOTA3XkEyXkFqcGc@._V1_.jpg",
+    "descripcion": "Bob Esponja y Patricio viven una nueva aventura submarina para rescatar a su amigo Gary."
   }
 ]
